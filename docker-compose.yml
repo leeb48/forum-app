@@ -19,6 +19,8 @@ services:
   mongo:
     image: mongo
     restart: always
+    volumes:
+      - "/home/bongpc/bong/projects/db-volumes/forum-app:/data/db"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
