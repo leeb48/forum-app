@@ -8,7 +8,8 @@ export class AuthService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
   async create(): Promise<void> {
-    new this.userModel({ name: 'mango' });
+    const user = new this.userModel({ name: 'mango' });
+    await user.save();
 
     console.log(await this.userModel.find().exec());
   }
