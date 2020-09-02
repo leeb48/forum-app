@@ -5,6 +5,9 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ./nginx
+    depends_on:
+      - api
+      - client
     ports:
       - "80:80"
 
@@ -15,6 +18,8 @@ services:
     volumes:
       - /app/node_modules
       - ./api:/app
+    environment:
+      JWT_SECRET: "mysecret"
 
   client:
     stdin_open: true
