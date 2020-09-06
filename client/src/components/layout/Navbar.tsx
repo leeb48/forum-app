@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const authButtons = (
   <Fragment>
-    <IconButton>
+    <IconButton component={RouterLink} to="/register">
       <Badge>
         <AddCircleOutlineIcon />
       </Badge>
