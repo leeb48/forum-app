@@ -1,7 +1,15 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Navbar from "./components/layout/Navbar";
 
 function App() {
-  return <div>Hello</div>;
+  return (
+    <Fragment>
+      <Router>
+        <Navbar />
+      </Router>
+    </Fragment>
+  );
 }
 
 export default App;
