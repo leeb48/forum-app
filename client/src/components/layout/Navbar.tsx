@@ -33,7 +33,7 @@ const authButtons = (
         <AddCircleOutlineIcon />
       </Badge>
     </IconButton>
-    <IconButton>
+    <IconButton component={RouterLink} to="/login">
       <Badge>
         <LockOpenIcon />
       </Badge>

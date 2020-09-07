@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import { Grid, TextField, Theme, Button } from "@material-ui/core";
 import { makeStyles, createStyles } from "@material-ui/styles";
 
-import { registerUser } from "../../actions/action.auth";
-import { RegisterUserDto } from "../../actions";
+import { loginUser } from "../../actions/action.auth";
+import { LoginUserDto } from "../../actions";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,27 +19,25 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface RegisterFormProps {
-  registerUser: (formData: RegisterUserDto) => void;
+interface LoginUserFormProps {
+  loginUser: (formData: LoginUserDto) => void;
 }
 
-const RegisterForm = ({ registerUser }: RegisterFormProps) => {
+const LoginUserForm = ({ loginUser }: LoginUserFormProps) => {
   const classes = useStyles();
 
-  const [formData, setFormData] = useState<RegisterUserDto>({
-    firstName: "",
-    lastName: "",
+  const [formData, setFormData] = useState<LoginUserDto>({
     username: "",
     password: "",
   });
 
-  const { firstName, lastName, username, password } = formData;
+  const { username, password } = formData;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = () => {
-    registerUser(formData);
+    loginUser(formData);
   };
 
   return (
@@ -49,26 +47,6 @@ const RegisterForm = ({ registerUser }: RegisterFormProps) => {
       <Grid item xs={12} sm={6}>
         {/* Form Grid Start */}
         <Grid container spacing={2} className={classes.formEle}>
-          <Grid xs={12} sm={6} item>
-            <TextField
-              fullWidth
-              id="first-name-input"
-              name="firstName"
-              value={firstName}
-              onChange={onChange}
-              label="First Name"
-            />
-          </Grid>
-          <Grid xs={12} sm={6} item>
-            <TextField
-              fullWidth
-              id="last-name-input"
-              name="lastName"
-              value={lastName}
-              onChange={onChange}
-              label="Last Name"
-            />
-          </Grid>
           <Grid xs={12} sm={6} item>
             <TextField
               fullWidth
@@ -97,7 +75,7 @@ const RegisterForm = ({ registerUser }: RegisterFormProps) => {
               variant="contained"
               color="secondary"
             >
-              Register
+              Log In
             </Button>
           </Grid>
         </Grid>
@@ -109,4 +87,4 @@ const RegisterForm = ({ registerUser }: RegisterFormProps) => {
   );
 };
 
-export default connect(null, { registerUser })(RegisterForm);
+export default connect(null, { loginUser })(LoginUserForm);

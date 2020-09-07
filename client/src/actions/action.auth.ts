@@ -29,3 +29,27 @@ export const registerUser = (data: RegisterUserDto) => async (
     console.log(error.message);
   }
 };
+
+// ---------------------------------------------------
+// Login User Action
+export type LoginUserDto = {
+  username: string;
+  password: string;
+};
+
+export type LoginUserAction = {
+  type: AuthActionTypes.login;
+  payload: string;
+};
+
+export const loginUser = (data: LoginUserDto) => async (
+  dispatch: Dispatch<LoginUserAction>
+) => {
+  try {
+    const res = await blogApi.post("/auth/login", data);
+
+    console.log(res.data);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
